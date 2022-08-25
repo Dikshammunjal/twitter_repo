@@ -30,7 +30,6 @@ spec:
       imagePullSecrets:
       - name: ocirsecret
       nodeSelector:
-        name: interactwl-wls-np
         usage: weblogic
 
 ---
