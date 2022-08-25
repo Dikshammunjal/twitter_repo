@@ -11,14 +11,19 @@ pipeline {
                 sh "mvn install -DskipTests" 
             }
         }
-        stage('Create docker image') { 
+        stage('Create docker image') {
+            agent {
+            node {
+            label 'agent-label'
+            }
+            }
             steps {
                 script {
                     def scmVars = checkout([
                         $class: 'GitSCM',
                         doGenerateSubmoduleConfigurations: false,
                         userRemoteConfigs: [[
-                            url: 'https://github.com/AdityaVishwekar/twitter-feed.git'
+                            url: 'https://github.com/Dikshammunjal/twitter_repo.git'
                           ]],
                         branches: [ [name: '*/master'] ]
                       ])
@@ -27,13 +32,18 @@ pipeline {
             }
         }
         stage('Push image to OCIR') { 
+            agent {
+            node {
+            label 'agent-label'
+            }
+            }
             steps {
                 script {
                     def scmVars = checkout([
                         $class: 'GitSCM',
                         doGenerateSubmoduleConfigurations: false,
                         userRemoteConfigs: [[
-                            url: 'https://github.com/AdityaVishwekar/twitter-feed.git'
+                            url: 'https://github.com/Dikshammunjal/twitter_repo.git'
                           ]],
                         branches: [ [name: '*/master'] ]
                       ])
