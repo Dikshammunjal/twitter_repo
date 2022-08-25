@@ -21,3 +21,6 @@ Deploy
 ======
 
 You will create Wercker pipelines to build, publish, and deploy this microservice during the workshop.
+
+
+[opc@interactwl-admin twitter_repo]$ ./update_deploy_microservices.sh iad.ocir.io  sehubjapacprod\/oracleidentitycloudservice\/diksha.m.munjal@oracle.com P98Wle409G+H:DKuFU}S diksha.m.munjal@oracle.com sehub-ns sehub iad.ocir.io\/sehubjapacprod\/spring-projects\/spring-boot-to:latest 8080 sehub\-svc
