@@ -8,5 +8,4 @@ EMAIL=$4
 
 
 
-kubectl create secret docker-registry ocirloginsecret --docker-server=$DOCKERURL  --docker-username=$USERNAME --docker-password=$PASSWORD  --docker-email=$EMAIL
-
+kubectl create secret docker-registry ocirloginsecret --docker-server=$DOCKERURL  --docker-username=''$USERNAME'' --docker-password=''$PASSWORD''  --docker-email=''$EMAIL''
