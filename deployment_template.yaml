@@ -28,7 +28,11 @@ spec:
           containerPort: changeport
           protocol: TCP
       imagePullSecrets:
-        - name: ocirsecret
+      - name: ocirsecret
+      nodeSelector:
+        name: interactwl-wls-np
+        usage: weblogic
+
 ---
 apiVersion: v1
 kind: Service
