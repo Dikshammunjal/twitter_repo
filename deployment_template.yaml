@@ -28,7 +28,7 @@ spec:
           containerPort: changeport
           protocol: TCP
       imagePullSecrets:
-      - name: ocirsecret
+      - name: ocirloginsecret
       nodeSelector:
         usage: weblogic
 
