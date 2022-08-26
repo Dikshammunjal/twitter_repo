@@ -65,7 +65,7 @@ pipeline {
             echo 'Deploy app to OKE Cluster'
 
             
-            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh bom.ocir.io '${params.REGISTRY_USERNAME}' '${params.REGISTRY_TOKEN}' diksha.m.munjal@oracle.com sehub-ns sehub '${params.DOCKER_REPO}/:${scmVars.GIT_COMMIT}' 8080 sehub-svc'
+            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh bom.ocir.io '${params.REGISTRY_USERNAME}' '${params.REGISTRY_TOKEN}' diksha.m.munjal@oracle.com sehub-ns sehub '${params.DOCKER_REPO}\:${scmVars.GIT_COMMIT}' 8080 sehub-svc'
            
                }
             }
