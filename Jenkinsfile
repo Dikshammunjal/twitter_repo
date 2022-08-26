@@ -72,7 +72,7 @@ pipeline {
 
 
                 
-            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh iad.ocir.io $USERNAME P98Wle409G+H:DKuFU}S diksha.m.munjal@oracle.com sehub-ns sehub sehub-ns sehub nginx 8080 sehub-svc'
+            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh bom.ocir.io $USERNAME $PASSWORD diksha.m.munjal@oracle.com sehub-ns sehub sehub-ns sehub $IMAGE 80 sehub-svc'
            
                }
             }
