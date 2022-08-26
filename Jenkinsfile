@@ -23,9 +23,9 @@ pipeline {
                         $class: 'GitSCM',
                         doGenerateSubmoduleConfigurations: false,
                         userRemoteConfigs: [[
-                            url: 'https://github.com/Dikshammunjal/twitter_repo.git'
+                            url: '${params.GIT_REPO_URL}'
                           ]],
-                        branches: [ [name: '*/master'] ]
+                        branches: [ [name: '*/${params.GIT_REPO_BRANCH}'] ]
                       ])
                 sh "docker build -f Dockerfile -t twitterfeed:${scmVars.GIT_COMMIT} ." 
                 }
@@ -43,9 +43,9 @@ pipeline {
                         $class: 'GitSCM',
                         doGenerateSubmoduleConfigurations: false,
                         userRemoteConfigs: [[
-                            url: 'https://github.com/Dikshammunjal/twitter_repo.git'
+                            url: '${params.GIT_REPO_URL}'
                           ]],
-                        branches: [ [name: '*/master'] ]
+                        branches: [ [name: '*/${params.GIT_REPO_BRANCH}'] ]
                       ])
                 sh "docker login -u ${params.REGISTRY_USERNAME} -p ${params.REGISTRY_TOKEN} bom.ocir.io"
                 sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
