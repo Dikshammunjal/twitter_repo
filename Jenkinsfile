@@ -52,8 +52,6 @@ pipeline {
                 sh "docker push ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}" 
                 env.GIT_COMMIT = scmVars.GIT_COMMIT
                 sh "export GIT_COMMIT=${env.GIT_COMMIT}"
-                env.USERNAME= ''${params.REGISTRY_USERNAME}''
-                env.PASSWORD= ''${params.REGISTRY_TOKEN}''
                 }
                }
             }
@@ -67,7 +65,7 @@ pipeline {
             echo 'Deploy app to OKE Cluster'
 
             
-            sh '''/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh iom.ocir.io $USERNAME $PASSWORD diksha.m.munjal@oracle.com sehub-ns sehub sehub-ns sehub iad.ocir.io/sehubjapacprod/spring-projects/spring-boot-to:latest 8080 sehub-svc'''
+            sh '''/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh iad.ocir.io ${params.REGISTRY_USERNAME} ${params.REGISTRY_TOKEN} diksha.m.munjal@oracle.com sehub-ns sehub sehub-ns sehub iad.ocir.io/sehubjapacprod/spring-projects/spring-boot-to:latest 8080 sehub-svc'''
            
                }
             }
