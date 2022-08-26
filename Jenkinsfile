@@ -55,20 +55,20 @@ pipeline {
                 }
                }
             }
-        stage('Deploy OKE') {
-            agent{
-             node{
-            label ‘agent-label’
-                }
-                }
+        stage('Deploy OKE') { 
+            agent {
+            node {
+            label 'agent-label'
+            }
+            }
             steps {
             echo 'Deploy app to OKE Cluster'
 
             
             sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh iad.ocir.io  sehubjapacprod/oracleidentitycloudservice/diksha.m.munjal@oracle.com P98Wle409G+H:DKuFU}S diksha.m.munjal@oracle.com sehub-ns sehub iad.ocir.io/sehubjapacprod/spring-projects/spring-boot-to:latest 8080 sehub-svc'
-            
+           
+               }
             }
-            
-            }
+        
         }
 }
