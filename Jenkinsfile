@@ -57,6 +57,7 @@ pipeline {
                 echo "${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
                 env.USERNAME="${params.REGISTRY_USERNAME}"
                 env.PASSWORD="${params.REGISTRY_TOKEN}"
+                env.IMAGE="${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
                 }
                }
             }
@@ -71,7 +72,7 @@ pipeline {
 
 
                 
-            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh iad.ocir.io sehubjapacprod/oracleidentitycloudservice/diksha.m.munjal@oracle.com P98Wle409G+H:DKuFU}S diksha.m.munjal@oracle.com sehub-ns sehub sehub-ns sehub nginx 8080 sehub-svc'
+            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh iad.ocir.io $USERNAME P98Wle409G+H:DKuFU}S diksha.m.munjal@oracle.com sehub-ns sehub sehub-ns sehub nginx 8080 sehub-svc'
            
                }
             }
