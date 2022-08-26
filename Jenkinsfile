@@ -27,7 +27,7 @@ pipeline {
                           ]],
                         branches: [ [name: "*/${params.GIT_REPO_BRANCH}"] ]
                       ])
-                sh "docker build -f Dockerfile -t twitterfeed:${scmVars.GIT_COMMIT} ." 
+                sh "docker build -f Dockerfile -t ${params.MIRCROSERVICE_NAME}:${scmVars.GIT_COMMIT} ." 
                 }
             }
         }
