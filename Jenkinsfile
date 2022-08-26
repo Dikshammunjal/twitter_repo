@@ -52,6 +52,9 @@ pipeline {
                 sh "docker push ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}" 
                 env.GIT_COMMIT = scmVars.GIT_COMMIT
                 sh "export GIT_COMMIT=${env.GIT_COMMIT}"
+                env.IMAGE= ${params.DOCKER_REPO}:${env.GIT_COMMIT}
+                env.USERNAME=${params.REGISTRY_USERNAME}
+                env.PASSWORD=${params.REGISTRY_TOKEN}
                 }
                }
             }
@@ -65,7 +68,7 @@ pipeline {
             echo 'Deploy app to OKE Cluster'
 
             
-            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh bom.ocir.io '${params.REGISTRY_USERNAME}' '${params.REGISTRY_TOKEN}' diksha.m.munjal@oracle.com sehub-ns sehub bom.ocir.io/sehubjapacprod/twitter-feed-repo:5a45db5f4a45ae9b33b970ea6893c620b41a8c01 8080 sehub-svc'
+            sh '''/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh bom.ocir.io $USERNAME $PASSWORD diksha.m.munjal@oracle.com sehub-ns sehub $IMAGE 8080 sehub-svc'''
            
                }
             }
