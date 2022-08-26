@@ -58,6 +58,7 @@ pipeline {
                 env.USERNAME="${params.REGISTRY_USERNAME}"
                 env.PASSWORD="${params.REGISTRY_TOKEN}"
                 env.IMAGE="${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
+                env.MICROSERVICENAME=  "${params.MIRCROSERVICE_NAME}"
                 }
                }
             }
@@ -72,7 +73,7 @@ pipeline {
 
 
                 
-            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh bom.ocir.io $USERNAME $PASSWORD diksha.m.munjal@oracle.com sehub-ns sehub $IMAGE 80 sehub-svc'
+            sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh bom.ocir.io $USERNAME $PASSWORD diksha.m.munjal@oracle.com $MICROSERVICENAME-ns $MICROSERVICENAME $IMAGE 80 $MICROSERVICENAME-svc'
            
                }
             }
