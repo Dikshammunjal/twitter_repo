@@ -64,18 +64,11 @@ pipeline {
             steps {
             echo 'Deploy app to OKE Cluster'
 
-            wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: '${ARGS}', var: 'SECRET']]]) {
+            
             sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/update_deploy_microservices.sh iad.ocir.io  ${params.REGISTRY_USERNAME} ${params.REGISTRY_TOKEN} diksha.m.munjal@oracle.com sehub-ns sehub iad.ocir.io/sehubjapacprod/spring-projects/spring-boot-to:latest 8080 sehub-svc'
+            
             }
-            }
-            post {
-            failure {
-            echo 'Failed in deploying app to OKE'
-            }
-            unstable {
-            echo 'Unstable n deploying app to OKE'
-            }
-            }
+            
             }
         }
 }
