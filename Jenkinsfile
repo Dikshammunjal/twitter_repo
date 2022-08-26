@@ -54,7 +54,9 @@ pipeline {
                 sh "export GIT_COMMIT=${env.GIT_COMMIT}"
                 echo "${params.REGISTRY_USERNAME}"
              
-                echo "${params.DOCKER_REPO} ${scmVars.GIT_COMMIT}"
+                echo "${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
+                env.USERNAME="${params.REGISTRY_USERNAME}"
+                env.PASSWORD="${params.REGISTRY_TOKEN}"
                 }
                }
             }
