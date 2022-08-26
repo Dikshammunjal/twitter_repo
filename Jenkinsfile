@@ -52,7 +52,7 @@ pipeline {
                 sh "docker push ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}" 
                 env.GIT_COMMIT = scmVars.GIT_COMMIT
                 sh "export GIT_COMMIT=${env.GIT_COMMIT}"
-                env.IMAGE= ${params.DOCKER_REPO}:${env.GIT_COMMIT}
+                env.IMAGE= '${params.DOCKER_REPO}:${env.GIT_COMMIT}'
                 env.USERNAME=${params.REGISTRY_USERNAME}
                 env.PASSWORD=${params.REGISTRY_TOKEN}
                 }
