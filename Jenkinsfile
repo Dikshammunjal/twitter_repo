@@ -55,7 +55,7 @@ pipeline {
                 }
                }
             }
-        stage(“Deploy_OKE") {
+        stage('Deploy OKE') {
             agent{
              node{
             label ‘agent-label’
