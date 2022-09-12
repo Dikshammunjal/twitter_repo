@@ -47,7 +47,9 @@ pipeline {
                           ]],
                         branches: [ [name: "*/${params.GIT_REPO_BRANCH}"] ]
                       ])
-                sh "export local_REGISTRY_TOKEN='"echo ${params.REGISTRY_TOKEN} | sed 's/[!@#$%^&*()-]/\\\&/g'"'"
+                    
+                env.TOKEN="${params.REGISTRY_TOKEN}"
+                sh "export local_REGISTRY_TOKEN="echo $TOKEN | sed 's/[!@#$%^&*()-]/\\\&/g'""
 
                 sh "docker login -u ${params.REGISTRY_USERNAME} -p echo ${local_REGISTRY_TOKEN} ${params.REGION}.ocir.io"
 
