@@ -27,11 +27,11 @@ pipeline {
                 sh "export GIT_COMMIT=${env.GIT_COMMIT}"
                 echo "${params.REGISTRY_USERNAME}"
              
-                echo "${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
+                echo "${params.DOCKER_REPO}"
                 env.OCIREGION="${params.REGION}"
                 env.USERNAME="${params.REGISTRY_USERNAME}"
                 env.PASSWORD="${params.REGISTRY_TOKEN}"
-                env.IMAGE="${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
+                env.IMAGE="${params.DOCKER_REPO}"
                 env.MICROSERVICENAME=  "${params.MIRCROSERVICE_NAME}"
                 env.REGIONNAME= "${params.REGION}"
                 env.EMAILID = "${params.REGISTRY_EMAIL}"
