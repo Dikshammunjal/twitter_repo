@@ -36,7 +36,7 @@ pipeline {
                 env.GIT_COMMIT=980980
                  
                     
-                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh ${params.REGISTRY_TOKEN} $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
+                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
 
                 }
                }
