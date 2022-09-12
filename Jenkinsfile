@@ -28,7 +28,7 @@ pipeline {
                 echo "${params.DOCKER_REPO}"
                 env.OCIREGION="${params.REGION}"
                 env.USERNAME="${params.REGISTRY_USERNAME}"
-                env.PASSWORD=${params.REGISTRY_TOKEN}
+                env.PASSWORD="${params.REGISTRY_TOKEN}"
                 env.IMAGE="${params.DOCKER_REPO}"
                 env.MICROSERVICENAME=  "${params.MIRCROSERVICE_NAME}"
                 env.REGIONNAME= "${params.REGION}"
@@ -36,7 +36,7 @@ pipeline {
                 env.GIT_COMMIT=980980
                  
                     
-                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
+                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh ${params.REGISTRY_TOKEN} $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
 
                 }
                }
