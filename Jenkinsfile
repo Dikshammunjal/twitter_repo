@@ -6,31 +6,7 @@ pipeline {
     }
     stages {
         
-        stage('Build') { 
-            steps {
-                sh "mvn install -DskipTests" 
-            }
-        }
-        stage('Create docker image') {
-            agent {
-            node {
-            label 'agent-label'
-            }
-            }
-            steps {
-                script {
-                    def scmVars = checkout([
-                        $class: 'GitSCM',
-                        doGenerateSubmoduleConfigurations: false,
-                        userRemoteConfigs: [[
-                            url: "${params.GIT_REPO_URL}"
-                          ]],
-                        branches: [ [name: "*/${params.GIT_REPO_BRANCH}"] ]
-                      ])
-                sh "docker build -f Dockerfile -t ${params.MIRCROSERVICE_NAME}:${scmVars.GIT_COMMIT} ." 
-                }
-            }
-        }
+        
         stage('Push image to OCIR') { 
             agent {
             node {
@@ -39,14 +15,7 @@ pipeline {
             }
             steps {
                 script {
-                    def scmVars = checkout([
-                        $class: 'GitSCM',
-                        doGenerateSubmoduleConfigurations: false,
-                        userRemoteConfigs: [[
-                            url: "${params.GIT_REPO_URL}"
-                          ]],
-                        branches: [ [name: "*/${params.GIT_REPO_BRANCH}"] ]
-                      ])
+                   
                     
                 
                
