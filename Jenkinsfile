@@ -47,7 +47,11 @@ pipeline {
                           ]],
                         branches: [ [name: "*/${params.GIT_REPO_BRANCH}"] ]
                       ])
-                sh "docker login -u ${params.REGISTRY_USERNAME} -p ${params.REGISTRY_TOKEN} bom.ocir.io"
+                sh "export local_REGISTRY_TOKEN=`echo ${params.REGISTRY_TOKEN} | sed 's/[!@#$%^&*()-]/\\\&/g'`"
+
+sh "docker login -u ${params.REGISTRY_USERNAME} -p echo ${local_REGISTRY_TOKEN} ${params.REGION}.ocir.io"
+
+
                 sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
                 sh "docker push ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}" 
                 env.GIT_COMMIT = scmVars.GIT_COMMIT
