@@ -23,8 +23,6 @@ pipeline {
                
                 
                     
-                env.GIT_COMMIT = scmVars.GIT_COMMIT
-                sh "export GIT_COMMIT=${env.GIT_COMMIT}"
                 echo "${params.REGISTRY_USERNAME}"
              
                 echo "${params.DOCKER_REPO}"
@@ -36,7 +34,7 @@ pipeline {
                 env.REGIONNAME= "${params.REGION}"
                 env.EMAILID = "${params.REGISTRY_EMAIL}"
                     
-                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
+                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $IMAGE'
 
                 }
                }
