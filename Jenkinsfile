@@ -33,8 +33,10 @@ pipeline {
                 env.MICROSERVICENAME=  "${params.MIRCROSERVICE_NAME}"
                 env.REGIONNAME= "${params.REGION}"
                 env.EMAILID = "${params.REGISTRY_EMAIL}"
+                env.GIT_COMMIT=980980
+                 
                     
-                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $IMAGE'
+                sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
 
                 }
                }
