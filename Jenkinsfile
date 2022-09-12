@@ -48,28 +48,27 @@ pipeline {
                         branches: [ [name: "*/${params.GIT_REPO_BRANCH}"] ]
                       ])
                     
-                    
                 
-
+               
+               
+               
+                
                     
-                sh 'export local_REGISTRY_TOKEN='echo '/${params.REGISTRY_TOKEN}' | 'sed 's/[!@#$%^&*()-]/\\\&/g''''
-
-                sh "docker login -u ${params.REGISTRY_USERNAME} -p echo ${local_REGISTRY_TOKEN} ${params.REGION}.ocir.io"
-
-
-                sh "docker tag twitterfeed:${scmVars.GIT_COMMIT} ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
-                sh "docker push ${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}" 
                 env.GIT_COMMIT = scmVars.GIT_COMMIT
                 sh "export GIT_COMMIT=${env.GIT_COMMIT}"
                 echo "${params.REGISTRY_USERNAME}"
              
                 echo "${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
+                env.OCIREGION="${params.REGION}"
                 env.USERNAME="${params.REGISTRY_USERNAME}"
                 env.PASSWORD="${params.REGISTRY_TOKEN}"
                 env.IMAGE="${params.DOCKER_REPO}:${scmVars.GIT_COMMIT}"
                 env.MICROSERVICENAME=  "${params.MIRCROSERVICE_NAME}"
                 env.REGIONNAME= "${params.REGION}"
                 env.EMAILID = "${params.REGISTRY_EMAIL}"
+                    
+                sh '/u01/shared/scripts/pipeline/microservices/twitter_repo/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
+
                 }
                }
             }
