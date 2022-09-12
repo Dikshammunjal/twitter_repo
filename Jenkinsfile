@@ -24,7 +24,7 @@ pipeline {
                 
                     
                 echo "${params.REGISTRY_USERNAME}"
-             
+                    echo "${params.REGISTRY_TOKEN}"
                 echo "${params.DOCKER_REPO}"
                 env.OCIREGION="${params.REGION}"
                 env.USERNAME="${params.REGISTRY_USERNAME}"
@@ -34,7 +34,6 @@ pipeline {
                 env.REGIONNAME= "${params.REGION}"
                 env.EMAILID = "${params.REGISTRY_EMAIL}"
                 env.GIT_COMMIT=980980
-                 
                     
                 sh '/u01/shared/scripts/pipeline/microservices/base_oke_template_jenkins/pushimage.sh $PASSWORD $USERNAME $OCIREGION $MICROSERVICENAME $GIT_COMMIT $IMAGE'
 
