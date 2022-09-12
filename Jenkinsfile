@@ -28,7 +28,7 @@ pipeline {
                 echo "${params.DOCKER_REPO}"
                 env.OCIREGION="${params.REGION}"
                 env.USERNAME="${params.REGISTRY_USERNAME}"
-                env.PASSWORD="${params.REGISTRY_TOKEN}"
+                env.PASSWORD=${params.REGISTRY_TOKEN}
                 env.IMAGE="${params.DOCKER_REPO}"
                 env.MICROSERVICENAME=  "${params.MIRCROSERVICE_NAME}"
                 env.REGIONNAME= "${params.REGION}"
